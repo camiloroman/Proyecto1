@@ -2,9 +2,10 @@
 #include <stdlib.h>
 #include "mostrar.h"
 #include "banderas.h"
+#include "Alu.h"
 
 int main()
 {
-    unsigned long int registros[12];
+    uint32_t registros[12];
     mostrardatos(registros);
 }
