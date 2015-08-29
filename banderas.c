@@ -43,3 +43,33 @@ else
 		R[3]=0;
 	}
 }
+
+void LSL(uint32_t *R,uint32_t R0,uint32_t R1)
+{
+	*R=R0<<R1;
+}
+
+void LSR(uint32_t *R,uint32_t R0,uint32_t R1)
+{
+	*R=R0>>R1;
+}
+
+void BIC(uint32_t *R,uint32_t R0)
+{
+	*R&=~R0;
+}
+
+void MVN(uint32_t *R,uint32_t R0)
+{
+	*R&=R0;
+}
+
+void RSB(uint32_t *R,uint32_t R0)
+{
+	*R=0-R0;
+}
+
+void NOP(uint32_t *R,uint32_t R0)
+{
+	
+}
