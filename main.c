@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "mostrar.h"
+#include "banderas.h"
 
 int main()
 {
