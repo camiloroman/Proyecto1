@@ -40,7 +40,7 @@ void banderas(uint32_t *R,uint32_t R0,uint32_t R1)
 
 	if(((R1>=pow(2,31))&&(R0>=pow(2,31))&&(RR<pow(2,31)))||((R0<pow(2,31))&&(R1<pow(2,31))&&(RR>=pow(2,31))))
 		{
-			if(((Rn>=pow(2,31))&&(Rm>=pow(2,31))&&(R<pow(2,31)))||((Rn<pow(2,31))&&(Rm<pow(2,31))&&(R>=pow(2,31))))
+			if(((R0>=pow(2,31))&&(R1>=pow(2,31))&&(RR<pow(2,31)))||((R1<pow(2,31))&&(R0<pow(2,31))&&(RR>=pow(2,31))))
     			R[3]=1; //Si se cumple la anterior condicion se activa la bandera de sobreflujo
 		}
 	else
