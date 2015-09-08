@@ -1,3 +1,4 @@
+#include <stdint.h>
 /**
 * \brief funcion para crear banderas
 * \param *R registro donde se almacenan los resultados

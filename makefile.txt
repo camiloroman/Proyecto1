@@ -1,9 +1,10 @@
-cc=gcc
-CFLAGS= -03 -c -Wall
+cc = gcc
+CFLAGS = -03 -c -Wall
+
 all: obj
-$(cc) -o main.exe *.o
-rm*.o
+	$(cc) -o main.exe *.o
+	rm*.o
 obj:
-$(cc) $(CFLAGS) *.c
+	$(cc) $(CFLAGS) *.c
 clean:
-rm main.exe
+	rm main.exe

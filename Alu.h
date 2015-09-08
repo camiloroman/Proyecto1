@@ -1,4 +1,4 @@
-
+#include <stdint.h>
 /**
 * \brief funcion ADD que realiza sumas
 * \param *R0 puntero del primer valor de los registros
