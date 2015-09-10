@@ -1,6 +1,5 @@
  #include <stdio.h>
  #include <stdlib.h>
- #include <math.h>
  #include <stdint.h>
  #include "banderas.h"
 
@@ -8,7 +7,7 @@ void banderas(uint32_t *R,uint32_t R0,uint32_t R1)
 {
 	uint32_t RR;//Se crea la variable auxiliar RR
 	RR=R0+R1;
-	if(RR>=pow(2,31))
+	if(RR>=<<31)
 		{
 			R[0]=1; //Si se cumple la condicion anterior se activa la bandera de signo
 		}
@@ -28,7 +27,7 @@ void banderas(uint32_t *R,uint32_t R0,uint32_t R1)
 		}
 
 
-	if(((R1>=pow(2,31))&&(R0>=pow(2,31)))||((R0>=pow(2,31))&&(R1<pow(2,31))&&(RR<pow(2,31)))||((R1>=pow(2,31))&&(R0<pow(2,31))&&(RR<pow(2,31))))
+	if(((R1>=(<<31))&&(R0>=(<<31)))||((R0>=(<<31))&&(R1<(<<31))&&(RR<(<<31)))||((R1>=(<<31))&&(R0<(<<31))&&(RR<(<<31))))
 		{
 			R[2]=1; //Si se cumple la anterior condicion se activa la bandera de carry
 		}
@@ -38,9 +37,9 @@ void banderas(uint32_t *R,uint32_t R0,uint32_t R1)
 		}
 
 
-	if(((R1>=pow(2,31))&&(R0>=pow(2,31))&&(RR<pow(2,31)))||((R0<pow(2,31))&&(R1<pow(2,31))&&(RR>=pow(2,31))))
+	if(((R1>=(<<31))&&(R0>=(<<31))&&(RR<(<<31)))||((R0<(<<31))&&(R1<(<<31))&&(RR>=(<<31))))
 		{
-			if(((R0>=pow(2,31))&&(R1>=pow(2,31))&&(RR<pow(2,31)))||((R1<pow(2,31))&&(R0<pow(2,31))&&(RR>=pow(2,31))))
+			if(((R0>=(<<31))&&(R1>=(<<31))&&(RR<(<<31)))||((R1<(<<31))&&(R0<(<<31))&&(RR>=(<<31))))
     			R[3]=1; //Si se cumple la anterior condicion se activa la bandera de sobreflujo
 		}
 	else
