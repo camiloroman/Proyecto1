@@ -10,3 +10,12 @@ void mostrardatos(uint32_t registros[])
 		printf("\n%d",&registros[i]);
 	}
 }
+
+void mostrarbanderas(uint32_t flags[])
+{
+	printf("BANDERAS ACTIVAS:\t(1 = bandera activa)\n");
+	printf("n: %d",flags[0]);
+	printf("z: %d",flags[1]);
+	printf("c: %d",flags[2]);
+	printf("v: %d",flags[3]);
+}

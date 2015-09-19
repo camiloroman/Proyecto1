@@ -3,82 +3,93 @@
  #include <stdint.h>
  #include "banderas.h"
 
+//R, R0 y R1 son los registros que se van a operar
+
 void banderas(uint32_t *R,uint32_t R0,uint32_t R1)
 {
 	uint32_t RR;//Se crea la variable auxiliar RR
+	int flags[4];//Se crea el arreglo "flags" para almacenar los valores de las banderas
 	RR=R0+R1;
-	if(RR>=(1<<31))
+	if(*R>=(1<<31))
 		{
-			R[0]=1; //Si se cumple la condicion anterior se activa la bandera de signo
+			flags[0]=1; //Si se cumple la condicion anterior se activa la bandera de signo
 		}
 	else
 		{
-			R[0]=0;
+			flags[0]=0;
 		}
 
 
-	if (RR==0)
+	if (*R==0)
 		{
-			R[1]=1; //Si RR=0 se activa la bandera de cero
+			flags[1]=1; //Si RR=0 se activa la bandera de cero
 		}
 	else
 		{
-			R[1]=0;
+			flags[1]=0;
 		}
 
 
 	if(((R1>=(1<<31))&&(R0>=(1<<31)))||((R0>=(1<<31))&&(R1<(1<<31))&&(RR<(1<<31)))||((R1>=(1<<31))&&(R0<(1<<31))&&(RR<(1<<31))))
 		{
-			R[2]=1; //Si se cumple la anterior condicion se activa la bandera de carry
+			flags[2]=1; //Si se cumple la anterior condicion se activa la bandera de carry
 		}
 	else
 		{
-			R[2]=0;
+			flags[2]=0;
 		}
 
 
 	if(((R1>=(1<<31))&&(R0>=(1<<31))&&(RR<(1<<31)))||((R0<(1<<31))&&(R1<(1<<31))&&(RR>=(1<<31))))
 		{
-    			R[3]=1; //Si se cumple la anterior condicion se activa la bandera de sobreflujo
+    			flags[3]=1; //Si se cumple la anterior condicion se activa la bandera de sobreflujo
 		}
 	else
 		{
-			R[3]=0;
+			flags[3]=0;
 		}
+
+	return *flags;
 }
 
 void LSL(uint32_t *R,uint32_t R0,uint32_t R1) 
 	{
 		*R=R0<<R1; //R0 se desplaza R1 posiciones a la izquierda y se almacena en *R
+		return *R; //retorna el valor de la operacion realizada
 	}
 
 
 void LSR(uint32_t *R,uint32_t R0,uint32_t R1)
 	{
 		*R=R0>>R1; //R0 se desplaza R1 posiciones a la derecha y se almacena en *R
+		return *R; //retorna el valor de la operacion realizada
 	}
 
 
 void BIC(uint32_t *R,uint32_t R0)
 	{
 		*R&=~R0; //Se realiza la AND entre el registro *R y el complemento de R0 y se almacena en *R
+		return *R; //retorna el valor de la operacion realizada
 	}
 
 void MVN(uint32_t *R,uint32_t R0)
 	{
 		*R&=R0; //Se realiza la AND entre el registro *R, R0 y se almacena en *R
+		return *R; //retorna el valor de la operacion realizada
 	}
 
 
 void RSB(uint32_t *R,uint32_t R0)
 	{
 		*R=0-R0;
+		return *R; //retorna el valor de la operacion realizada
 	}
 
 
 void NOP(uint32_t *R,uint32_t R0)
 	{
 		//Esta funcion no hace nada
+		return *R; //retorna el valor que tenia *R 
 	}
 
 
@@ -95,6 +106,7 @@ void ROR(uint32_t *R,uint32_t R0,uint32_t R1)
 				*R=R0<<R1; //R0 se desplaza R1 posiciones a la izquierda y se almacena en *R
 				*R=*R|aux; //Se realiza la suma bit a bit entre *R, aux y se almacena en *R
 			}
+		return *R; //retorna el valor de la operacion realizada
 	}
 
 
@@ -107,6 +119,7 @@ void REV(uint32_t *R,uint32_t R0)
 		aux2=((R0<<16)>>24)<<16; //En aux2 se almacena el resultado de R0 desplazado 
 		aux3=((R0<<8)>>24)<<8; //En aux3 se almacena el resultado de R0 desplazado
 		*R=((aux|aux1)|aux2)|aux3; //En *R se almacena la suma bit a bit de las tres variables auxiliares
+		return *R; //retorna el valor de la operacion realizada
 	}
 
 
@@ -118,4 +131,5 @@ void REVIG(uint32_t *R,uint32_t R0)
 		aux2=((R0<<16)>>24);	//Se hacen varios desplazamientos de R0 y se almacenan el las tres variables auxiliares
 		aux3=((R0<<24)>>16);
 		*R=((aux|aux1)|aux2)|aux3; //En *R se almacena la suma bit a bit de las tres variables auxiliares
+		return *R; //retorna el valor de la operacion realizada
 	}
