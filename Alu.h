@@ -25,7 +25,7 @@ void EOR(uint32_t *R0,uint32_t R1,uint32_t R2);
 
 /**
 * \brief funcion MOV mueve datos de un registro a otro
-* \param *R0 puntero en el que se guarda el dato	
+* \param *R0 puntero en el que se guarda el dato
 * \param R1 registro del que se extrae el dato
 */
 void MOV(uint32_t *R0,uint32_t R1);

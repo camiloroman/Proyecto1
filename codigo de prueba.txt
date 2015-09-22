@@ -1,0 +1,29 @@
+	movs R0,#5
+loop
+	SUBS R0,R0,#1
+	BNE loop
+	MOVS R0,#36
+	MOVS RL,#6
+	BL function
+loop
+	BL loop
+function
+	MOV R2,R0
+	MOVS R3,#0*1
+	LSLS R3,R3,#31
+	MOVS R0,#0
+	MOVS R4,#0
+function_loop
+	LSLS R2,R2,#1
+	ADCS R4,R4,R4
+	CMP R4,R1
+	BCC function_lessthan
+	ADDS R0,R0,R3
+	SUBS R4,R4,R1
+function_lessthan
+	LSRS R3,R3,#1
+	BNE function_loop
+	MOV R1,R4
+	BX LR
+
+
