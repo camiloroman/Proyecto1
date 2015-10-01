@@ -5,7 +5,7 @@
 
 void BEQ(uint32_t *R, uint32_t pos, uint32_t *pc)
 {
-	if(*R[1]==1)
+	if(R[1]==1)
 	{
 		*pc+=pos;
 	}
@@ -17,7 +17,7 @@ void BEQ(uint32_t *R, uint32_t pos, uint32_t *pc)
 
 void BNE(uint32_t *R, uint32_t pos, uint32_t *pc)
 {
-	if(*R[1]==0)
+	if(R[1]==0)
 	{
 		*pc+=pos;
 	}
@@ -30,7 +30,7 @@ void BNE(uint32_t *R, uint32_t pos, uint32_t *pc)
 
 void BCS(uint32_t *R, uint32_t pos, uint32_t *pc)
 {
-	if(*R[2]==1)
+	if(R[2]==1)
 	{
 		*pc+=pos;
 	}
@@ -42,7 +42,7 @@ void BCS(uint32_t *R, uint32_t pos, uint32_t *pc)
 
 void BCC(uint32_t *R, uint32_t pos, uint32_t *pc)
 {
-	if(*R[1]==0)
+	if(R[1]==0)
 	{
 		*pc+=pos;
 	}
@@ -54,7 +54,7 @@ void BCC(uint32_t *R, uint32_t pos, uint32_t *pc)
 
 void BMI(uint32_t *R, uint32_t pos, uint32_t *pc)
 {
-	if(*R[0]==1)
+	if(R[0]==1)
 	{
 		*pc+=pos;
 	}
@@ -65,7 +65,7 @@ void BMI(uint32_t *R, uint32_t pos, uint32_t *pc)
 }
 void BPL(uint32_t *R, uint32_t pos, uint32_t *pc)
 {
-	if(*R[0]==0)
+	if(R[0]==0)
 	{
 		*pc+=pos;
 	}
@@ -77,7 +77,7 @@ void BPL(uint32_t *R, uint32_t pos, uint32_t *pc)
 
 void BVS(uint32_t *R, uint32_t pos, uint32_t *pc)
 {
-	if(*R[3]==1)
+	if(R[3]==1)
 	{
 		*pc+=pos;
 	}
@@ -89,7 +89,7 @@ void BVS(uint32_t *R, uint32_t pos, uint32_t *pc)
 
 void BVC(uint32_t *R, uint32_t pos, uint32_t *pc)
 {
-	if(*R[3]==0)
+	if(R[3]==0)
 	{
 		*pc+=pos;
 	}
@@ -100,7 +100,7 @@ void BVC(uint32_t *R, uint32_t pos, uint32_t *pc)
 }
 void BHI(uint32_t *R, uint32_t pos, uint32_t *pc)
 {
-	if((*R[2]==1)&&(*R[1]==0))void BHI(uint32_t *R, uint32_t pos, uint32_t *pc)
+	if((R[2]==1)&&(R[1]==0))
 	{
 		*pc+=pos;
 	}
@@ -112,7 +112,7 @@ void BHI(uint32_t *R, uint32_t pos, uint32_t *pc)
 
 void BLS(uint32_t *R, uint32_t pos, uint32_t *pc)
 {
-	if((*R[2]==0)&&(*R[1]==1))
+	if((R[2]==0)&&(R[1]==1))
 	{
 		*pc+=pos;
 	}
@@ -123,7 +123,7 @@ void BLS(uint32_t *R, uint32_t pos, uint32_t *pc)
 }
 void BGE(uint32_t *R, uint32_t pos, uint32_t *pc)
 {
-	if(*R[0]==*R[3])
+	if(R[0]==R[3])
     {
 		*pc+=pos;
 	}
@@ -135,7 +135,7 @@ void BGE(uint32_t *R, uint32_t pos, uint32_t *pc)
 
 void BLT(uint32_t *R, uint32_t pos, uint32_t *pc)
 {
-	if(*R[0]!=*R[3])
+	if(R[0]!=R[3])
 	{
 		*pc+=pos;
 	}
@@ -147,7 +147,7 @@ void BLT(uint32_t *R, uint32_t pos, uint32_t *pc)
 
 void BGT(uint32_t *R, uint32_t pos, uint32_t *pc)
 {
-	if((*R[1]==0)&&(*R[0]==*R[3]))
+	if((R[1]==0)&&(R[0]==R[3]))
     {
 		*pc+=pos;
 	}
@@ -159,7 +159,7 @@ void BGT(uint32_t *R, uint32_t pos, uint32_t *pc)
 
 void BLE(uint32_t *R, uint32_t pos, uint32_t *pc)
 {
-	if((*R[1]==0)||(*R[0]!=*R[3]))
+	if((R[1]==0)||(R[0]!=R[3]))
 {
 		*pc+=pos;
 	}
