@@ -4,6 +4,8 @@
 #include "mostrar.h"
 #include "banderas.h"
 #include "Alu.h"
+#include "Memory.h"
+#include "LDR y STR.h"
 #include "branch.h"
 #include <curses.h>
 
@@ -11,7 +13,7 @@ int main()
 {
 	unsigned i;
 	uint32_t flags[4]={0,0,0,0};//Se declara el arreglo flags y se inicializan sus valores en 0
-	uint32_t registros[12]={0,0,0,0,0,0,0,0,0,0,0,0,0};
+	uint32_t registros[15]={1,2,3,4,0,0,0,0,0,0,0,0,0,0,0};
 initscr();		/* Inicia modo curses */
 	curs_set(0);	/* Cursor Invisible */
 	raw();			/* Activa modo raw */
@@ -21,7 +23,7 @@ initscr();		/* Inicia modo curses */
 	start_color();	/* Permite manejar colores */
 
 	init_pair(1, COLOR_GREEN, COLOR_BLACK);	/* Pair 1 -> Texto verde
-											   fondo Negro */
+						fondo Negro */
 
 
 	border( ACS_VLINE, ACS_VLINE,
@@ -197,8 +199,8 @@ int operacion;  //Se declara variable entera "operacion"
 	}
 
 
-	printf("1 - Para continuar");
-	printf("otro - Para salir");
+	printf("\n1 - Para continuar");
+	printf("\totro - Para salir\n");
 	scanf("%d", &continuar);
 
 }while(continuar==1);
